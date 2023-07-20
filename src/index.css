@@ -1,5 +1,9 @@
 body {
   background-color: #111111;
   color: #fafafa;
-  font-family: Sarmady;
+  font-family: NormalF;
+}
+
+.card-bg {
+  background-color: #614d4d;
 }

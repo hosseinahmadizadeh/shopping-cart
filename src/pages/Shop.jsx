@@ -1,13 +1,16 @@
-import { Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
+import ProductItem from "../components/ProductItem";
+import { productList } from "../data/items";
 
-function Shop (){
-    return (
-        <Row xs={1} md={4} className="g-4">
-            <Col align="center"><h3>Product 1</h3></Col>
-            <Col align="center"><h3>Product 2</h3></Col>
-            <Col align="center"><h3>Product 3</h3></Col>
-            <Col align="center"><h3>Product 4</h3></Col>
-        </Row>
-    )
+function Shop() {
+  return (
+    <Row xs={1} md={4} className="g-4">
+      {productList.map((item) => (
+        <Col align="center" key={item.id}>
+          <ProductItem product={item} />
+        </Col>
+      ))}
+    </Row>
+  );
 }
-export default Shop
+export default Shop;
