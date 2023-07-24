@@ -1,11 +1,12 @@
 import { useContext } from "react";
 
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Form, Row, Col } from "react-bootstrap";
 
 import { CartContext } from "../context/CartContext";
 
 function ProductItem({ product }) {
   const cart = useContext(CartContext);
+  const productQuantity = cart.getProductQuantity(product.id);
 
   return (
     <Card className="mt-5 card-bg">
@@ -22,13 +23,39 @@ function ProductItem({ product }) {
         <Card.Text align="left" className="text-light">
           {product.price}
         </Card.Text>
-        <Button
-          onClick={() => cart.addItemToCart(product.id)}
-          variant="btn btn-outline-secondary"
-          className="text-white"
-        >
-          Add Item
-        </Button>
+        {productQuantity > 0 ? (
+          <>
+            <Form as={Row}>
+              <Form.Label column="true" sm="6" className="text-white">
+                Count: {productQuantity}
+              </Form.Label>
+              <Col sm="6">
+                <Button
+                  sm="6"
+                  className="mx-2 text-white"
+                  variant="btn btn-outline-secondary"
+                >
+                  +
+                </Button>
+                <Button
+                  sm="6"
+                  className="mx-2 text-white"
+                  variant="btn btn-outline-secondary"
+                >
+                  -
+                </Button>
+              </Col>
+            </Form>
+          </>
+        ) : (
+          <Button
+            onClick={() => cart.addItemToCart(product.id)}
+            variant="btn btn-outline-secondary"
+            className="text-white"
+          >
+            Add Item
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

@@ -15,16 +15,20 @@ export function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
   function getProductQuantity(id) {
+    console.log(cartProducts);
     const quantity = cartProducts.find((item) => item.id === id)?.quantity;
+    console.log(quantity);
     if (quantity === undefined) {
       return 0;
-    } else return quantity;
+    }
+    console.log(quantity);
+    return quantity;
   }
 
   function addItemToCart(id) {
     const quantity = getProductQuantity(id);
     if (quantity === 0) {
-      setCartProducts(...cartProducts, { id: id, quantity: 1 });
+      setCartProducts([...cartProducts, { id: id, quantity: 1 }]);
     } else {
       setCartProducts(
         cartProducts.map((item) =>
