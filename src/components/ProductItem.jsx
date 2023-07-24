@@ -31,6 +31,7 @@ function ProductItem({ product }) {
               </Form.Label>
               <Col sm="6">
                 <Button
+                  onClick={() => cart.addItemToCart(product.id)}
                   sm="6"
                   className="mx-2 text-white"
                   variant="btn btn-outline-secondary"
@@ -38,6 +39,7 @@ function ProductItem({ product }) {
                   +
                 </Button>
                 <Button
+                  onClick={() => cart.removeItemFromCart(product.id)}
                   sm="6"
                   className="mx-2 text-white"
                   variant="btn btn-outline-secondary"
