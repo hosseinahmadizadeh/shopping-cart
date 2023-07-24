@@ -4,6 +4,8 @@ import { BsCart } from "react-icons/bs";
 
 import { CartContext } from "../context/CartContext";
 
+import CartItems from "./CartItems";
+
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
 
@@ -34,9 +36,30 @@ function Navbar() {
         </NavbarBs.Collapse>
       </NavbarBs>
       <Modal show={showModal} onHide={handleClose} contentClassName="card-bg">
-        <Modal.Header closeButton closeVariant="white">
-          <Modal.Title>Orders</Modal.Title>
-          <Modal.Body>Product</Modal.Body>
+        <Modal.Header>
+          <Modal.Body>
+            {productCount > 0 ? (
+              <>
+                <h3 className="mb-4">Orders</h3>
+                {cart.items.map((item) => (
+                  <CartItems
+                    key={item.id}
+                    id={item.id}
+                    quantity={item.quantity}
+                  ></CartItems>
+                ))}
+              </>
+            ) : (
+              <h3>The shopping cart is empty!</h3>
+            )}
+            <Button
+              onClick={handleClose}
+              variant="btn btn-light"
+              className="mt-5 mx-5 "
+            >
+              Close
+            </Button>
+          </Modal.Body>
         </Modal.Header>
       </Modal>
     </>
