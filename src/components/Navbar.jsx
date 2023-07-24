@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Navbar as NavbarBs, Button, Modal } from "react-bootstrap";
 import { BsCart } from "react-icons/bs";
 
+import { CartContext } from "../context/CartContext";
+
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
+
+  const cart = useContext(CartContext);
+
+  const productCount = cart.items.reduce(
+    (sum, product) => sum + product.quantity,
+    0
+  );
+
   const handleShow = () => {
     setShowModal(true);
   };
@@ -19,7 +29,7 @@ function Navbar() {
             variant="btn btn-outline-secondary"
             className="text-white"
           >
-            <BsCart className="mx-2 mb-1"></BsCart>Orders
+            ({productCount})<BsCart className="mx-2 mb-1"></BsCart>Orders
           </Button>
         </NavbarBs.Collapse>
       </NavbarBs>
