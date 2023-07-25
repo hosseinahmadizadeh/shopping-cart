@@ -12,7 +12,7 @@ function CartItems({ id, quantity }) {
     <>
       <p>Title : {productData.title}</p>
       <p>Count: {quantity}</p>
-      <p>Price: {quantity * productData.price}</p>
+      <p>Price: {`${quantity * productData.price} $`}</p>
       <Button
         size="sm"
         className="mb-5 text-white"

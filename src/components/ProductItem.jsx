@@ -22,7 +22,7 @@ function ProductItem({ product }) {
           {product.title}
         </Card.Title>
         <Card.Text align="left" className="text-light">
-          {product.price}
+          {`${product.price} $`}
         </Card.Text>
         {productQuantity > 0 ? (
           <>

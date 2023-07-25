@@ -48,6 +48,7 @@ function Navbar() {
                     quantity={item.quantity}
                   ></CartItems>
                 ))}
+                <h3>Total Price: {`${cart.getTotalAmount()} $`}</h3>
               </>
             ) : (
               <h3>The shopping cart is empty!</h3>
