@@ -22,6 +22,14 @@ function Navbar() {
   const handleClose = () => {
     setShowModal(false);
   };
+
+  async function checkout() {
+    await fetch("http://localhost:3000/api", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: cart.items }),
+    });
+  }
   return (
     <>
       <NavbarBs className="border-bottom border-secondary">
@@ -53,6 +61,9 @@ function Navbar() {
             ) : (
               <h3>The shopping cart is empty!</h3>
             )}
+            <Button className="mt-5" variant="btn btn-light" onClick={checkout}>
+              Checkout
+            </Button>
             <Button
               onClick={handleClose}
               variant="btn btn-light"
