@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 
 import Navbar from "./components/Navbar";
 import Shop from "./pages/Shop";
-import Success from "./pages/success";
+import Success from "./pages/Success";
 
 function App() {
   return (
