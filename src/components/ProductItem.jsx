@@ -64,7 +64,7 @@ function ProductItem({ product }) {
             variant="btn btn-outline-secondary"
             className="text-white"
           >
-            Add Item
+            ADD TO BAG
           </Button>
         )}
       </Card.Body>

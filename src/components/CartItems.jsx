@@ -10,7 +10,7 @@ function CartItems({ id, quantity }) {
   const productData = getProductData(id);
   return (
     <>
-      <p>Title : {productData.title}</p>
+      <p>{productData.title}</p>
       <p>Count: {quantity}</p>
       <p>Price: {`${quantity * productData.price} $`}</p>
       <Button
@@ -19,7 +19,7 @@ function CartItems({ id, quantity }) {
         variant="btn btn-outline-secondary"
         onClick={() => cart.deleteFromCart(id)}
       >
-        Delete This Item
+        DELETE
       </Button>
     </>
   );

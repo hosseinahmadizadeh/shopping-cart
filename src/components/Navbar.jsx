@@ -24,11 +24,17 @@ function Navbar() {
   };
 
   async function checkout() {
-    await fetch("http://localhost:3000/api", {
+    const response = await fetch("http://localhost:3000/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: cart.items }),
     });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.assign(data.url);
+    }
   }
   return (
     <>
@@ -39,7 +45,7 @@ function Navbar() {
             variant="btn btn-outline-secondary"
             className="text-white"
           >
-            ({productCount})<BsCart className="mx-2 mb-1"></BsCart>Orders
+            ({productCount})<BsCart className="mx-2 mb-1"></BsCart>MY BAG
           </Button>
         </NavbarBs.Collapse>
       </NavbarBs>
@@ -62,14 +68,14 @@ function Navbar() {
               <h3>The shopping cart is empty!</h3>
             )}
             <Button className="mt-5" variant="btn btn-light" onClick={checkout}>
-              Checkout
+              CHECKOUT
             </Button>
             <Button
               onClick={handleClose}
               variant="btn btn-light"
-              className="mt-5 mx-5 "
+              className="mt-5 mx-2 "
             >
-              Close
+              CLOSE
             </Button>
           </Modal.Body>
         </Modal.Header>
